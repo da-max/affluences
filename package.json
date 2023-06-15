@@ -7,7 +7,8 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "author": "Maxime Ben Hassen <maxime.benhassen@fedabian.fr>",
   "license": "ISC",
@@ -24,9 +25,16 @@
     "concurrently": "^8.2.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "nodemon": "^2.0.22",
     "prettier": "2.8.8",
     "prisma": "^4.15.0",
     "typescript": "^5.1.3"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --cache --fix",
+    "*.{js,css,md,ts}": "prettier --write",
+    ".{prisma}": "prisma format"
   }
 }
