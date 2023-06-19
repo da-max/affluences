@@ -7,8 +7,7 @@ services:
     volumes:
       - .:/usr/src/app:z
     working_dir: /usr/src/app
-    ports:
-      - "3000:3000"
+    network_mode: 'host'
     env_file: .env
     depends_on:
       - db
@@ -21,13 +20,6 @@ services:
       - .env
     ports:
       - "3306:3306"
-
-  adminer:
-    image: adminer:latest
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
 
 volumes:
   data:
